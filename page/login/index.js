@@ -7,7 +7,7 @@
  */
 
 // 1.2 收集手机号和验证码数据
-document.querySelector('.login-form').addEventListener('click', (e) => {
+document.querySelector('.btn').addEventListener('click', () => {
     const form = document.querySelector('.login-form')
     const data = serialize(form, { hash: true, empty: true })
     axios({
@@ -19,7 +19,13 @@ document.querySelector('.login-form').addEventListener('click', (e) => {
         }
     }).then(res => {
         myAlert(true, '登录成功')
-        console.log(res)
+        localStorage.setItem('token', res.data.data.token)
+        console.log(res.data.data.token)
+        setTimeout(() => {
+            location.href = '../content/index.html'
+        }, 1500)
+        
+        console.log('登录成功')
     }).catch(err => {
         myAlert(false, '登录失败')
         console.log(err)
