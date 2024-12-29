@@ -19,8 +19,8 @@ document.querySelector('.btn').addEventListener('click', () => {
         }
     }).then(res => {
         myAlert(true, '登录成功')
-        localStorage.setItem('token', res.data.data.token)
-        console.log(res.data.data.token)
+        localStorage.setItem('token', res.data.token)
+        console.log(res.data.token)
         setTimeout(() => {
             location.href = '../content/index.html'
         }, 1500)
